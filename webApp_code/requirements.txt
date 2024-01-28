@@ -7,7 +7,6 @@ seaborn
 tensorflow
 keras
 scikit-learn
-warnings
 random
 re
 pickle
