@@ -1,9 +1,25 @@
-hall = db['hall']
-dishes = db['dishes']
-rating = db['rating']
-reviews = db['reviews']
-stations = db['stations']
-people = db['people']
+import streamlit as st
+import pymongo
+from pymongo import MongoClient
+
+# Connecting to my mongodb localhost service
+cert_string = st.secrets["DB_ROOT_CERT"]
+cert_path = "mongo_cert.pem"
+with open(cert_path, "w") as cert_file:
+    cert_file.write(cert_string)
+uri = "mongodb+srv://cluster0.zrljcr1.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+mongoDBClient = MongoClient(uri,
+                     tls=True,
+                     tlsCertificateKeyFile=cert_path)
+
+data = mongoDBClient['spartan_eats']
+
+hall = data['hall']
+dishes = data['dishes']
+rating = data['rating']
+reviews = data['reviews']
+stations = data['stations']
+people = data['people']
 
 def get_menu(hall, meal):
     return data[(data[hall['hall_name']] == hall) & (data[dishes['meal_cat']] == meal)]
