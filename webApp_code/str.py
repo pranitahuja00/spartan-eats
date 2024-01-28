@@ -3,10 +3,14 @@ import pymongo
 from pymongo import MongoClient
 
 # Connecting to my mongodb localhost service
+cert_string = st.secrets["DB_ROOT_CERT"]
+cert_path = "mongo_cert.pem"
+with open(cert_path, "w") as cert_file:
+    cert_file.write(cert_string)
 uri = "mongodb+srv://cluster0.zrljcr1.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
 mongoDBClient = MongoClient(uri,
                      tls=True,
-                     tlsCertificateKeyFile='https://raw.githubusercontent.com/pranitahuja00/spartan-eats/main/webApp_code/X509-cert-6349946631379972350.pem')
+                     tlsCertificateKeyFile=cert_path)
 
 db = mongoDBClient['spartan_eats']
 db_col = db['people']
