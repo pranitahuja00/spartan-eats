@@ -7,5 +7,7 @@ seaborn
 tensorflow
 keras
 scikit-learn
-re
+regex
+re2
+mkl-random
 pickle
