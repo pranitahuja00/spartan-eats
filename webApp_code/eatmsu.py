@@ -39,8 +39,6 @@ def get_menu(hall, meal):
 def display_menu(hall, meal):
     menu_items = get_menu(hall, meal)
 
-print(display_menu)
-
     if menu_items.empty:
         st.warning("No menu items found.")
         return
