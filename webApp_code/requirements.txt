@@ -1,2 +1,13 @@
 streamlit
 pymongo[srv]==3.12
+pandas
+numpy
+matplotlib
+seaborn
+tensorflow
+keras
+scikit-learn
+warnings
+random
+re
+pickle
