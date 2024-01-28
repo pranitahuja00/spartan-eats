@@ -10,4 +10,4 @@ scikit-learn
 regex
 re2
 mkl-random
-pickle
+cloudpickle
